@@ -26,6 +26,7 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -35,6 +36,18 @@ android {
     }
 }
 
+ext.supportVersion = '23.0.1'
+
 dependencies {
-    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile "com.android.support:appcompat-v7:${project.ext.supportVersion}"
+
+    androidTestCompile 'junit:junit:4.12'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2'
+    androidTestCompile 'com.android.support.test:rules:0.3'
+    androidTestCompile ('com.android.support.test:runner:0.3') {
+        // test:runner is out of step with its support-annotations version. Exclude that & import it
+        // separately to avoid mixing dependency versions in the combined classpath.
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestCompile "com.android.support:support-annotations:${project.ext.supportVersion}"
 }
