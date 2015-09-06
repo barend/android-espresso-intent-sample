@@ -18,6 +18,7 @@ package nl.garvelink.blog.espressointentsample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,5 +26,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        TextView tv = (TextView) findViewById(R.id.main__tv_hello);
+        if (getIntent().hasExtra("Name")) {
+            final String name = getIntent().getStringExtra("Name");
+            tv.setText(getString(R.string.hello_name, name));
+        }
     }
 }

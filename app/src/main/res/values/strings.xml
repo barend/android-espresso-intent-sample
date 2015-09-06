@@ -18,5 +18,6 @@
     <string name="app_name">Espresso Intent Sample</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="hello_name">Hello %s!</string>
     <string name="action_settings">Settings</string>
 </resources>
